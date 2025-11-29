@@ -1,4 +1,4 @@
-// databse
+//databse
 let items = [
     { id: 1, name: "Chicken Burger", price: 1200, category: "burger", img: "assets/Img/chicken-burger.png" },
     { id: 2, name: "Beef Burger", price: 1500, category: "burger", img: "assets/Img/beef-burger.png" },
@@ -8,13 +8,14 @@ let items = [
     { id: 6, name: "Coca Cola", price: 300, category: "drink", img: "assets/Img/cola.png" }
 ];
 
-let cart = [];
+let cart = []; 
 
 // loading the menu
 function loadMenu() {
     let container = document.getElementById("menu-container");
-    container.innerHTML = "";
-    items.forEach((item) => {
+    container.innerHTML = ""; 
+
+    items.forEach((item, index) => {
         container.innerHTML += `
             <div class="col-md-4 col-sm-6 mb-4">
                 <div class="card product-card h-100" onclick="addToCart(${item.id})">
@@ -23,6 +24,8 @@ function loadMenu() {
                         <h6 class="card-title fw-bold">${item.name}</h6>
                         <p class="card-text text-danger fw-bold">${item.price} LKR</p>
                         <button class="btn btn-add btn-sm w-100">Add to Order</button>
+                        <!-- DELETE BUTTON (For CRUD) -->
+                        <button class="btn btn-outline-danger btn-sm w-100 mt-2" onclick="deleteProduct(event, ${index})">Delete Item</button>
                     </div>
                 </div>
             </div>
@@ -31,17 +34,46 @@ function loadMenu() {
 }
 loadMenu();
 
+// delete and creating products
+function addProduct() {
+    let name = document.getElementById("new-name").value;
+    let price = document.getElementById("new-price").value;
+    let img = document.getElementById("new-image").value;
+
+    if(name === "" || price === "") {
+        alert("Please fill in all fields");
+        return;
+    }
+
+    let newId = items.length > 0 ? items[items.length - 1].id + 1 : 1;
+    let newItem = { id: newId, name: name, price: parseInt(price), category: "custom", img: img };
+
+    items.push(newItem); 
+    loadMenu(); 
+
+    document.getElementById("new-name").value = "";
+    document.getElementById("new-price").value = "";
+}
+
+function deleteProduct(event, index) {
+    event.stopPropagation(); 
+    if(confirm("Are you sure you want to delete this item?")) {
+        items.splice(index, 1); 
+        loadMenu(); 
+    }
+}
+
 // shopping vart
 function addToCart(id) {
     let product = items.find(item => item.id === id);
     cart.push(product);
-    updateCart();
+    updateCart(); 
 }
 
 function updateCart() {
     let cartBody = document.getElementById("cart-items");
     let totalDisplay = document.getElementById("total-price");
-    cartBody.innerHTML = "";
+    cartBody.innerHTML = ""; 
     let total = 0;
 
     cart.forEach((item, index) => {

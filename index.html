@@ -70,7 +70,35 @@
             </div>
         </div>
     </div>
-    <div id="admin-section"></div>
+    <!--admin panal to manage the products -->
+    <div class="container-fluid mt-5 mb-5 p-4 bg-light border-top">
+        <div class="row">
+            <div class="col-12">
+                <h4 class="text-danger fw-bold">Admin Panel (Manage Products)</h4>
+                <p class="text-secondary small">Use this section to add new items to the menu.</p>
+            </div>
+
+            <!-- Adding new items-->
+            <div class="col-md-3">
+                <input type="text" id="new-name" class="form-control mb-2" placeholder="Item Name (e.g. Fish Burger)">
+            </div>
+            <div class="col-md-3">
+                <input type="number" id="new-price" class="form-control mb-2" placeholder="Price (LKR)">
+            </div>
+            <div class="col-md-3">
+                <select id="new-image" class="form-select mb-2">
+                    <option value="assets/Img/chicken-burger.png">Chicken Burger Icon</option>
+                    <option value="assets/Img/beef-burger.png">Beef Burger Icon</option>
+                    <option value="assets/Img/cheese-burger.png">Cheese Burger Icon</option>
+                    <option value="assets/Img/fries.png">Fries Icon</option>
+                    <option value="assets/Img/cola.png">Cola Icon</option>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <button class="btn btn-success w-100 fw-bold" onclick="addProduct()">+ Add Item</button>
+            </div>
+        </div>
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
