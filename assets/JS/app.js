@@ -1,4 +1,3 @@
-console.log("Burgershop JS loaded");
 // databse
 let items = [
     { id: 1, name: "Chicken Burger", price: 1200, category: "burger", img: "assets/Img/chicken-burger.png" },
@@ -9,11 +8,12 @@ let items = [
     { id: 6, name: "Coca Cola", price: 300, category: "drink", img: "assets/Img/cola.png" }
 ];
 
-// loading the menu 
+let cart = [];
+
+// loading the menu
 function loadMenu() {
     let container = document.getElementById("menu-container");
-    container.innerHTML = ""; 
-
+    container.innerHTML = "";
     items.forEach((item) => {
         container.innerHTML += `
             <div class="col-md-4 col-sm-6 mb-4">
@@ -31,6 +31,43 @@ function loadMenu() {
 }
 loadMenu();
 
+// shopping vart
 function addToCart(id) {
-    console.log("Clicked:", id);
+    let product = items.find(item => item.id === id);
+    cart.push(product);
+    updateCart();
+}
+
+function updateCart() {
+    let cartBody = document.getElementById("cart-items");
+    let totalDisplay = document.getElementById("total-price");
+    cartBody.innerHTML = "";
+    let total = 0;
+
+    cart.forEach((item, index) => {
+        total += item.price;
+        cartBody.innerHTML += `
+            <tr>
+                <td>${item.name}</td>
+                <td>${item.price}</td>
+                <td><button class="btn btn-danger btn-sm" onclick="removeFromCart(${index})">&times;</button></td>
+            </tr>
+        `;
+    });
+    totalDisplay.innerText = total + " LKR";
+}
+
+function removeFromCart(index) {
+    cart.splice(index, 1);
+    updateCart();
+}
+
+function placeOrder() {
+    let name = document.getElementById("customer-name").value;
+    if (cart.length === 0) { alert("Your cart is empty!"); return; }
+    if (name === "") { alert("Please enter a customer name."); return; }
+    alert("Order Placed Successfully!\nCustomer: " + name + "\nTotal: " + document.getElementById("total-price").innerText);
+    cart = [];
+    document.getElementById("customer-name").value = "";
+    updateCart();
 }
