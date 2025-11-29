@@ -12,3 +12,41 @@ h3,
 h4 {
     font-weight: 600;
 }
+
+/* Product Card Styling */
+.product-card {
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+    background: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    border-radius: 10px;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.card-img-top {
+    height: 140px;
+    object-fit: contain;
+    padding: 15px;
+}
+
+.card-body {
+    background-color: #fff;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.btn-add {
+    background-color: #ff9800;
+    color: white;
+    border: none;
+}
+
+.btn-add:hover {
+    background-color: #e65100;
+    color: white;
+}
