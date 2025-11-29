@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GrillMaster POS</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/CSS/style.css">
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-dark mb-3 shadow-sm" style="background-color: #d32f2f;">
+        <div class="container-fluid">
+            <!-- LOGO -->
+            <a class="navbar-brand fw-bold d-flex align-items-center" href="#">
+                <img src="assets/Img/logo.png" alt="Logo" width="60" height="60" class="d-inline-block me-2">
+                <span class="fs-3">GrillMaster POS</span>
+            </a>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row">
+            <!-- LEFT Product Menu -->
+            <div class="col-md-8 col-12">
+                <div class="p-4 bg-white border rounded shadow-sm">
+                    <h3 class="mb-4 text-secondary">Menu Items</h3>
+                    <div class="row" id="menu-container">
+                        <p>Loading items...</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RIGHT Bill -->
+            <div class="col-md-4 col-12">
+                <div class="p-4 bg-white border rounded shadow-sm" style="min-height: 500px;">
+                    <div class="mb-3">
+                        <label class="form-label fw-bold">Customer Name:</label>
+                        <input type="text" id="customer-name" class="form-control" placeholder="Enter name here...">
+                    </div>
+
+                    <h4 class="mt-4">Current Order</h4>
+                    <div class="table-responsive">
+                        <table class="table table-hover mt-2">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>Item</th>
+                                    <th>Price</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="cart-items">
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <hr>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h4>Total:</h4>
+                        <h3 class="text-danger fw-bold" id="total-price">0 LKR</h3>
+                    </div>
+
+                    <button class="btn btn-dark w-100 mt-4 py-2 fw-bold" onclick="placeOrder()">PLACE ORDER</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="admin-section"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+    <script src="assets/JS/app.js"></script>
+</body>
+
+</html>
